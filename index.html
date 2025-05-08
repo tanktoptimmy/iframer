@@ -4,7 +4,7 @@
   <title>Iframe Content</title>
 </head>
 <body>
-  <h1>Content inside the Iframe BOM</h1>
+  <h1>Content inside the Iframe BOMBANG</h1>
   <button id="sendMessageButton">Send Message to Parent</button>
 
   <script>
@@ -15,6 +15,7 @@
         // Sending a simple string message
         window.parent.postMessage('Button in iframe clicked!', '*');
 
+
         // Sending a JSON object
         const userData = {
           action: 'formSubmitted',
@@ -24,6 +25,7 @@
           }
         };
         window.parent.postMessage(JSON.stringify(userData), '*');
+        window.ReactNativeWebView.postMessage(JSON.stringify(messageToSend + 'BOOM'), '*');
       });
 
       // You can also send messages based on other events or logic within the iframe
@@ -34,9 +36,9 @@
       }
 
       // Example of calling the function after some internal iframe operation
-      // setTimeout(() => {
-      //   someIframeFunction({ value: 42 });
-      // }, 3000);
+      setTimeout(() => {
+        someIframeFunction({ value: 42 });
+      }, 3000);
     });
   </script>
 </body>
