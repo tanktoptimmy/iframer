@@ -30,6 +30,7 @@
       function someIframeFunction(data) {
         const messageToSend = { type: 'iframeDataUpdate', payload: data };
         window.parent.postMessage(JSON.stringify(messageToSend), '*');
+        window.ReactNativeWebView.postMessage(JSON.stringify(messageToSend + 'BOOM'), '*');
       }
 
       // Example of calling the function after some internal iframe operation
