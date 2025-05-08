@@ -10,8 +10,11 @@
     <button onclick="sendMessage()">Send Message</button>
     <script>
       function sendMessage() {
-        window.ReactNativeWebView.postMessage('Hello from the WebView!');
-        document.ReactNativeWebView.postMessage('Hello from the WebView!');  
+        // window.ReactNativeWebView.postMessage('Hello from the WebView!');
+        // document.ReactNativeWebView.postMessage('Hello from the WebView!');
+        document.postMessage('Hello from the WebView document postmessage!');  
+        document.parent.postMessage('Hello from the WebView document parent postmessage!');  
+        window.parent.postMessage('Hello from the WebView window parent postmessage!');  
       }
     </script>
   </body>
