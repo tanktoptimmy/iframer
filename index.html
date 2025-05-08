@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iframe Content</title>
+</head>
+<body>
+  <h1>Content inside the Iframe</h1>
+  <button id="sendMessageButton">Send Message to Parent</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sendMessageButton = document.getElementById('sendMessageButton');
+
+      sendMessageButton.addEventListener('click', function() {
+        // Sending a simple string message
+        window.parent.postMessage('Button in iframe clicked!', '*');
+
+        // Sending a JSON object
+        const userData = {
+          action: 'formSubmitted',
+          formData: {
+            name: 'John Doe',
+            email: 'john.doe@example.com'
+          }
+        };
+        window.parent.postMessage(JSON.stringify(userData), '*');
+      });
+
+      // You can also send messages based on other events or logic within the iframe
+      function someIframeFunction(data) {
+        const messageToSend = { type: 'iframeDataUpdate', payload: data };
+        window.parent.postMessage(JSON.stringify(messageToSend), '*');
+      }
+
+      // Example of calling the function after some internal iframe operation
+      // setTimeout(() => {
+      //   someIframeFunction({ value: 42 });
+      // }, 3000);
+    });
+  </script>
+</body>
+</html>
