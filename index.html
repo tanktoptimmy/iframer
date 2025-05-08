@@ -12,6 +12,7 @@
       const sendMessageButton = document.getElementById('sendMessageButton');
 
       sendMessageButton.addEventListener('click', function() {
+        alert('Button clicked!');
         // Sending a simple string message
         window.parent.postMessage('Button in iframe clicked!', '*');
 
